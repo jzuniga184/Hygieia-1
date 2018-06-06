@@ -22,7 +22,8 @@ node {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withRegistry('https://registry.hub.docker.com', 'docker-id') {
-        def customImage = docker.build("hygieia:${env.BUILD_ID}"), "-f ${dockerfile} ./dockerfiles")
+        def customImage = docker.build("hygieia:${env.BUILD_ID}", 
+                                       "-f ${dockerfile} ./dockerfiles")
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
