@@ -1,0 +1,16 @@
+---
+  
+- name: Install docker
+  yum: name={{ item }} state=latest
+  become: true
+  with_items:
+    - docker
+
+- name: shell for docker-compose
+  shell: curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+
+- name: check permissions for docker-compose
+  shell: chmod +x /usr/local/bin/docker-compose
+
+- name: nodejs and npm
+  shell: yum install -y gcc-c++ make; curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -

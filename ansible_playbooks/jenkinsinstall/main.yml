@@ -1,0 +1,12 @@
+- name: Configure CI server
+  hosts: all
+  become: yes
+  become_method: sudo
+  remote_user: centos
+ 
+  roles:
+   # - geerlingguy.java 
+   # - geerlingguy.jenkins
+     - avinash6784.maven
+     - docker
+    
