@@ -1,97 +1,97 @@
-# Hygieia + Terraform + Docker on AWS.
+# CI/CD Hygieia + Terraform + Docker Swarm on AWS EC2.
 
-installation and configuration of Hygieia dashboard on AWS using Terraform with docker CE.
+Installation and configuration of Hygieia dashboard on AWS using Terraform with docker CE. This is a for from https://github.com/capitalone/Hygieia
+
+These creates and contains: 
+
+*Jenkins node 
+*Docker Swarm cluster of 1 master and 2 slaves
+* CI/CD Jenkins scripted pipeline to deploy the app upon a change.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Hygieia is a single, configurable, easy-to-use dashboard to visualize near real-time status of the entire delivery pipeline. The health of the continuous delivery pipeline, from code commit to production deployment, with all the necessary information around health and quality of the software, is essential for any DevOps Organization.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+-Create and AWS account.
 
-```
-AWS account and a "Small tier" for Jenkins (Free tier will ran out of resources at build) (https:aws.amazon.com/free)
-Terraform (https://www.terraform.io/intro/getting-started/install.html) 
-Ansible (https://docs.ansible.com/ansible/2.4/intro_installation.html)
+AWS account and a "Small tier" for Jenkins (Free tier will ran out of resources at the build process) 
 
-```
+https:aws.amazon.com/free
+
+- Create a docker hub and docker cloud free accounts 
+
+We will use this to publish our images from our scripted pipeline and trigger a deploy to swarm upon a change in the repo.
+
+https://hub.docker.com/
+https://cloud.docker.com
+
+Clone or Fork this repo to your localhost.
+
+```git clone https://github.com/jzuniga184/Hygieia-1.git```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+Here are the steps you need to follow to install your development enviroment, note this steps are for a mac running version 10.13.2
 
-Say what the step will be
+From localhost (mac)
 
 ```
-
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew install terraform
 sudo easy_install pip
-pip install ansible 
+sudo pip install ansible
+sudo pip install boto
+sudo pip install six
+curl -o /usr/local/bin/ec2.py https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.py
+curl -o /usr/local/bin/ec2.ini https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.ini
 ```
 
-And repeat
+From AWS
+
+Create security credentials Go To https://console.aws.amazon.com/iam/home?#/security_credential under "Access keys (access key ID and secret access key" and create a pair of keys. Note your Access key ID and your Secret Access Key.
+
+From the EC2 dashboard launch a new from Amazon Machine Image (AMI) and note down the AMI number we will need this for Terraform.
+
+Once you do that export these variables to your LOCALHOST.
 
 ```
-until finished
+export AWS_ACCESS_KEY_ID=''
+export AWS_SECRET_ACCESS_KEY=''
+export ANSIBLE_HOSTS=PATH
+export EC2_INI_PATH=PATH
+export DOCKER_ID_USER="<your-docker-ID-NOT-email"
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+## Creating Terraform instances on AWS
 
-## Running the tests
+From your localhost on $LOCALHOST/terraform/0.11.7/bin/ Do:
 
-Explain how to run the automated tests for this system
+```ec2.py --list```
 
-### Break down into end to end tests
+```terraform init```
 
-Explain what these tests test and why
+```terraform play```
 
-```
-Give an example
-```
+```terraform apply```
 
-### And coding style tests
+```./docker-swarm-cluster/playbook.yml -i ec2.py -u centos  --private-key=$PATH/clusterkp.pem```
 
-Explain what these tests test and why
+These will a docker swarm instance of 1 master and 2 slaves on AWS free tier.
 
-```
-Give an example
-```
 
-## Deployment
+## Installing dependencies on AWS
 
-Add additional notes about how to deploy this on a live system
+From your localhost on $LOCALHOST/ansible/jenkinsinstall/main.yml run:
 
-## Built With
+```ansible-playbook /usr/local/bin/playbooks/jenkinsinstall/main.yml -i ec2.py -u centos --private-key=/Users/jzuniga/Documents/AWS/<your-key-here>.pem```
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+These will install Jenkins on a AWS EC2 "Small tier"
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-
-Acknowledgments
-Hat tip to anyone whose code was used
-Inspiration
-etc
