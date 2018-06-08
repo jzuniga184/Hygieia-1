@@ -37,15 +37,10 @@ node {
          docker.withRegistry('https://registry.hub.docker.com','docker-id') {
          sh """
          docker login -u jrzj64 -p rodol4fo
-         """
-             
-         withDockerServer('tcp://ec2-52-14-197-202.us-east-2.compute.amazonaws.com', '/tmp/clusterkp.pem') {
-         sh """
+         ssh -i "/tmp/clusterkp.pem" centos@ec2-52-14-197-202.us-east-2.compute.amazonaws.com
          docker service create jrzj64/hygieia
          docker push jrzj64/hygieia
          """
-            
-        }
     } */
 }
 
