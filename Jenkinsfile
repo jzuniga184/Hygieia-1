@@ -24,20 +24,26 @@ node {
 
     stage('Push docker image') {
         docker.withRegistry('https://registry.hub.docker.com','docker-id') {
-        docker.withServer('tcp://ec2-52-14-197-202.us-east-2.compute.amazonaws.com', '/tmp/clusterkp.pem') {
         sh """
         docker login -u jrzj64 -p rodol4fo
         docker tag hygieia:latest jrzj64/hygieia
         docker push jrzj64/hygieia
         """
-            }
         }
     }
     
     stage('Deploy on swarm') {
-         withDockerServer('tcp://52.14.68.130:2375') {
-         sh """docker run --net jenkinspipelinelivedemo_default \
-         --name demo${version} -d -p 10080 docker.artifactory:8000/demo:${version}"""
+         docker.withRegistry('https://registry.hub.docker.com','docker-id') {
+         sh """
+         docker login -u jrzj64 -p rodol4fo
+         """
+             
+         withDockerServer('tcp://ec2-52-14-197-202.us-east-2.compute.amazonaws.com', '/tmp/clusterkp.pem') {
+         sh """
+         docker service create jrzj64/hygieia
+         docker push jrzj64/hygieia
+         """
+            
         }
     }
 }
