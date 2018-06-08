@@ -81,7 +81,7 @@ From your localhost on $LOCALHOST/terraform/0.11.7/bin/ Do:
 These will a docker swarm instance of 1 master and 2 slaves on AWS free tier.
 
 
-## Installing dependencies on AWS
+## Installing dependencies for Jenkins on AWS
 
 From your localhost on $LOCALHOST/ansible/jenkinsinstall/main.yml run:
 
