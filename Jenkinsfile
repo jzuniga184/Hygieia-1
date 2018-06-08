@@ -32,7 +32,8 @@ node {
         """
         }
     }
-    /* I had some issues connecting to the master node and ran out of time so i comment this part out */
+    /* I had some issues connecting to the master node and ran out of time so i comment this part out, 
+       I could have done this with docker cloud but was out of the scope of this */
     
     /*stage('Deploy on swarm') { 
          docker.withRegistry('https://registry.hub.docker.com','docker-id') {
