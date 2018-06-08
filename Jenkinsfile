@@ -31,8 +31,9 @@ node {
         """
         }
     }
+    /* I had some issues connecting to the master node and ran out of time so i comment this part out*/
     
-    /*stage('Deploy on swarm') {
+    /*stage('Deploy on swarm') { 
          docker.withRegistry('https://registry.hub.docker.com','docker-id') {
          sh """
          docker login -u jrzj64 -p rodol4fo
