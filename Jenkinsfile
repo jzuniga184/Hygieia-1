@@ -1,5 +1,14 @@
 node {
+    
     def app
+
+    stage("set env variables") {
+       steps {
+         script {
+             env.PASSWORD = readFile 'output.txt'
+         }
+         echo "${env.PASSWORD}"
+       }
 
     stage('Clone repository') {
        
@@ -17,14 +26,12 @@ node {
 
 
     stage('Push image') {
-        /* Finally, we'll push the image with two tags:
-         * First, the incremental build number from Jenkins
-         * Second, the 'latest' tag.
-         * Pushing multiple tags is cheap, as all the layers are reused. */
+        sh """
         docker.withRegistry('https://registry.hub.docker.com', 'docker-id') {
-        /* def customImage = docker.build("hygieia:${env.BUILD_ID}") */
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
+        docker login -u jrzj64 --password='${PASSWORD}'
+        docker tag hygieia:latest $DOCKER_ID_USER/hygieia
+        docker push $DOCKER_ID_USER/hygieia
+        """
         }
     }
 }
