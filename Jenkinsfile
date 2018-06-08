@@ -3,7 +3,6 @@ node {
     def app
 
     stage("set env variables") {
-       steps {
          script {
              env.PASSWORD = readFile 'output.txt'
          }
