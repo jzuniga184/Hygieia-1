@@ -24,7 +24,7 @@ node {
 
     stage('Push docker image') {
         docker.withRegistry('https://registry.hub.docker.com','docker-id') {
-        docker.withServer('tcp://52.14.197.202:2376', '/tmp/clusterkp.pem') {
+        docker.withServer('tcp://ec2-52-14-197-202.us-east-2.compute.amazonaws.com', '/tmp/clusterkp.pem') {
         sh """
         docker login -u jrzj64 -p rodol4fo
         docker tag hygieia:latest jrzj64/hygieia
