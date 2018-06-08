@@ -23,7 +23,7 @@ node {
 
 
     stage('Push docker image') {
-        docker.withRegistry('https://registry.hub.docker.com', 'docker-id') {
+        docker.withRegistry('https://registry.hub.docker.com','credentials-id') {
         sh """
         docker login -u jrzj64 --password='${PASSWORD}'
         docker tag hygieia:latest jrzj64/hygieia
