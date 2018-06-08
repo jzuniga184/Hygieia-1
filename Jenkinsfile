@@ -25,15 +25,17 @@ node {
     stage('Push docker image') {
         docker.withRegistry('https://registry.hub.docker.com','docker-id') {
         sh """
-        docker login -u jrzj64 -p pocpoc
-        docker tag hygieia:latest jrzj64/hygieia
+        docker login -u jrzj64 -p rodol4fo
+        docker tag hygieia:latest jrzj64/
         docker push jrzj64/hygieia
         """
         }
     }
     stage('Deploy on swarm') {
-
-	  sh 'ssh -t root@52.14.68.130 "docker service create jrzj64/hygieia"'
+         withDockerServer('tcp://52.14.68.130:2375') {
+         sh """docker run --net jenkinspipelinelivedemo_default \
+         --name demo${version} -d -p 10080 docker.artifactory:8000/demo:${version}"""
+        }
     }
 }
 
