@@ -5,10 +5,9 @@ node {
          script {
              env.DOCKER = readFile 'output.txt'
          }
-         echo "${env.DOCKER}"
        }
 
-    stage('Clone repository') {
+    stage('Checkout') {
        
         checkout scm
     }
@@ -17,21 +16,26 @@ node {
         sh "mvn clean install"
     }
 
-    stage('Build image') {
+    stage('Build docker image') {
 
        sh "docker-compose build"
     }
 
 
-    stage('Push image') {
+    stage('Push docker image') {
         sh """
         docker.withRegistry('https://registry.hub.docker.com', 'docker-id') {
-        docker login --username='${$DOCKER_ID_USER}' --password='${PASSWORD}'
-        docker tag hygieia:latest $DOCKER_ID_USER/hygieia
-        docker push $DOCKER_ID_USER/hygieia
+        docker login -u jrzj64 --password='${PASSWORD}'
+        docker tag hygieia:latest jrzj64/hygieia
+        docker push jrzj64/hygieia
         """
         }
+
+    stage('Run app on swarm') {
+
+	  sh 'ssh -t root@52.14.68.130 "docker service create jrzj64/hygieia"'
     }
+}
 
 
 return this
