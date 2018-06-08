@@ -32,7 +32,7 @@ node {
         }
     }
     
-    stage('Deploy on swarm') {
+    /*stage('Deploy on swarm') {
          docker.withRegistry('https://registry.hub.docker.com','docker-id') {
          sh """
          docker login -u jrzj64 -p rodol4fo
@@ -45,7 +45,7 @@ node {
          """
             
         }
-    }
+    } */
 }
 
 
