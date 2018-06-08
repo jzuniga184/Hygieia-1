@@ -32,8 +32,9 @@ node {
         """
         }
     }
-    /* I had some issues connecting to the master node and ran out of time so i comment this part out, 
-       I could have done this with docker cloud but was out of the scope of this */
+    /* I had some issues connecting to the master node and ran out of time so ... 
+       
+       I made this with Docker cloud free tier, that is detecting auto changes from this repo and deploying as required */
     
     /*stage('Deploy on swarm') { 
          docker.withRegistry('https://registry.hub.docker.com','docker-id') {
