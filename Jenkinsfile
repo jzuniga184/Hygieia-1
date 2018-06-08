@@ -3,7 +3,7 @@ node {
 
     stage("set env variables") {
          script {
-             env.DOCKER = readFile 'output.txt'
+             env.PASSWORD = readFile 'output.txt'
          }
        }
 
@@ -31,7 +31,7 @@ node {
         """
         }
 
-    stage('Run app on swarm') {
+    stage('Deploy on swarm') {
 
 	  sh 'ssh -t root@52.14.68.130 "docker service create jrzj64/hygieia"'
     }
