@@ -1,66 +1,97 @@
-<div align="center">
-<img width="250" align="top" src="/UI/src/assets/img/hygieia_b.png"><a href="https://www.blackducksoftware.com/about/news-events/releases/2015-open-source-rookies-year"><img width="55" align="top" hspace="20" src="https://github.com/capitalone/Hygieia/blob/gh-pages/media/images/Rookies_Award_Badge.png"></a> 
-</div>
-<div align="center"> 
- <p> <b>Pronunciation: <i>hi-gee-ya <a href="https://en.wikipedia.org/wiki/Hygieia"></i>(Origin: Greek)</a> </p>
-</div>
+# Hygieia + Terraform + Docker on AWS.
 
-<div align="center">
-  <!-- Build Status -->
-  <a href="https://travis-ci.org/capitalone/Hygieia.svg?branch=master"><img src="https://travis-ci.org/capitalone/Hygieia.svg?branch=master" alt="Build Status"/></a>
-  <!-- Codacy Badge -->
-  <a href="https://www.codacy.com/app/amit-mawkin/Hygieia"><img src="https://api.codacy.com/project/badge/grade/de1a2a557f8e458e9a959be8c2e7fcba"
-      alt="Codacy Badge"/></a>
-  <!-- Maven Central -->
-  <a href="http://search.maven.org/#search%7Cga%7C1%7Ccapitalone"><img src="https://img.shields.io/maven-central/v/com.capitalone.dashboard/Hygieia.svg" alt="Maven Central"/></a>
-  <!-- License -->
-  <a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%202-blue.svg"
-      alt="License"/></a>
-  <!-- Gitter Chat -->
-  <a href="https://gitter.im/capitalone/Hygieia?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Gitter Chat"/></a>
-</div>
+installation and configuration of Hygieia dashboard on AWS using Terraform with docker CE.
 
-<div align="center">
-  <h2>
-    <a href="http://capitalone.github.io/Hygieia/getting_started.html"><img src="https://github.com/capitalone/Hygieia/blob/gh-pages/media/images/Buttons/Documentation.png" alt="Documentation" width="125" align="center"></a>
-    <span>|</span>
-    <a href="http://capitalone.github.io/Hygieia/screenshots.html"><img src="https://github.com/capitalone/Hygieia/blob/gh-pages/media/images/Buttons/Screenshots.png" alt="Screenshots" width="125" align="center"></a>
-    <span>|</span>
-    <a href="http://capitalone.github.io/Hygieia/contribute.html"><img src="https://github.com/capitalone/Hygieia/blob/gh-pages/media/images/Buttons/Contribute.png" alt="Contribute" width="125" align="center"></a>
-    <span>|</span>
-    <a href="http://capitalone.github.io/Hygieia/contact.html"><img src="https://github.com/capitalone/Hygieia/blob/gh-pages/media/images/Buttons/Contact.png" alt="Contact" width="125" align="center"></a>
-  </h2>
-</div>
+## Getting Started
 
-<table>
-<colgroup>
-<col width="100%" />
-</colgroup>
- 
-<tbody>
-<tr>
-<td><a href="https://github.com/Hygieia/ExecDashboard"><img src="https://github.com/capitalone/Hygieia/blob/gh-pages/media/images/ReadmeIcons/Hygieia3.png" alt="Hygieia3.0" height="145" width="940"/></a></td>
-</tr> 
-</tbody> 
-</table>
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-<table>
-<colgroup>
-<col width="33.3%" />
-<col width="33.3%" />
-<col width="33.4%" />
-</colgroup>
+### Prerequisites
 
-<tbody>
-<tr>
-<td><a href="http://capitalone.github.io/Hygieia/getting_started.html"><img src="https://github.com/capitalone/Hygieia/blob/gh-pages/media/images/ReadmeIcons/About.png" alt="About Icon" height="145" width="280"/></a></td>
-<td><a href="https://www.youtube.com/watch?v=SoNTA78j0tc"><img src="https://github.com/capitalone/Hygieia/blob/gh-pages/media/images/ReadmeIcons/Video.png" alt="Video Icon" align="center" height="145" width="280"/></td>
-<td><a href="http://capitalone.github.io/Hygieia/architecture.html"><img src="https://github.com/capitalone/Hygieia/blob/gh-pages/media/images/ReadmeIcons/Architecture.png" alt="Architecture Icon" align="center" height="145" width="280"/></a></td>
-</tr>
-<tr>
-<td><a href="http://capitalone.github.io/Hygieia/framework.html"><img src="https://github.com/capitalone/Hygieia/blob/gh-pages/media/images/ReadmeIcons/Framework.png" alt="Framework Icon" align="center" height="145" width="280"/></td>
-<td><a href="http://capitalone.github.io/Hygieia/setup.html"><img src="https://github.com/capitalone/Hygieia/blob/gh-pages/media/images/ReadmeIcons/Installation.png" alt="Install Icon" align="center" height="145" width="280"/></a></td>
-<td><a href="https://github.com/capitalone/Hygieia/graphs/contributors"><img src="https://github.com/capitalone/Hygieia/blob/gh-pages/media/images/ReadmeIcons/TopContributors.png" alt="Contributors Icon" align="center" height="145" width="280"/></a></td>
-</tr>
-</tbody>
-</table>
+What things you need to install the software and how to install them
+
+```
+AWS account and a "Small tier" for Jenkins (Free tier will ran out of resources at build) (https:aws.amazon.com/free)
+Terraform (https://www.terraform.io/intro/getting-started/install.html) 
+Ansible (https://docs.ansible.com/ansible/2.4/intro_installation.html)
+
+```
+
+### Installing
+
+A step by step series of examples that tell you how to get a development env running
+
+Say what the step will be
+
+```
+
+sudo easy_install pip
+pip install ansible 
+```
+
+And repeat
+
+```
+until finished
+```
+
+End with an example of getting some data out of the system or using it for a little demo
+
+## Running the tests
+
+Explain how to run the automated tests for this system
+
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
+
+Acknowledgments
+Hat tip to anyone whose code was used
+Inspiration
+etc
