@@ -47,7 +47,7 @@ resource "aws_security_group" "ssh_and_http" {
 
 resource "aws_instance" "jenkins_master" {
     ami = "ami-5c0c3339"
-    instance_type = "t2.micro"
+    instance_type = "t2.small"
     key_name = jenkins1
     security_groups = ["${aws_security_group.ssh_and_http.name}"]
 
