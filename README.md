@@ -1,5 +1,7 @@
 # CI/CD Hygieia + Terraform + Docker Swarm on AWS EC2.
 
+Doing the demo now FUN
+
 Installation and configuration of Hygieia dashboard on AWS using Terraform with docker CE. This is a for from https://github.com/capitalone/Hygieia
 
 These creates and contains: 
