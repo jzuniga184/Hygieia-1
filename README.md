@@ -1,4 +1,6 @@
 # CI/CD Hygieia + Terraform + Docker Swarm on AWS EC2.
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjzuniga184%2FHygieia-1.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjzuniga184%2FHygieia-1?ref=badge_shield)
+
 
 Doing the demo now FUN
 
@@ -97,3 +99,6 @@ These will install Jenkins on a AWS EC2 "Small tier"
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjzuniga184%2FHygieia-1.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjzuniga184%2FHygieia-1?ref=badge_large)
